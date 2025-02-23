@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#606060" // Comentarios en gris oscuro
+                }
+            },
+            {
+                "scope": "string.quoted.docstring",
+                "settings": {
+                    "foreground": "#bababa" // Bloques de comentarios ''' '''
+                }
+            }
+        ]
+    }
+}

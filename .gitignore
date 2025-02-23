@@ -1,0 +1,6 @@
+# Ignorar archivos innecesarios
+*.log
+*.tmp
+__pycache__/
+.vscode/
+.DS_Store
