@@ -17,9 +17,9 @@ mi_diccionario["nombre"] = "Guillermo"
 print(mi_diccionario["nombre"])
 
 # Verificando si una clave existe
-print("edad" in mi_diccionario)
+print("edad" in mi_diccionario) # como no existe la clave "edad", devolverá 'false'
 
-# Creando un diccionario con datos
+###### Creando un diccionario ######
 estudiante = {"nombre": "Juan", "edad": 25, "materia": "Matemáticas"}
 
 # Actualizando un valor
@@ -28,13 +28,10 @@ estudiante["edad"] = 26
 # Eliminando una clave
 del estudiante["materia"]
 
-# Imprimiendo claves
+# Imprimiendo todas las claves
 print(estudiante.keys())
 
-################################
-### Creando otro diccionario ###
-################################
-
+###### Creando otro diccionario ######
 agenda = {"Juan": "1234567890", "Joana": "9876543210", "Jimena": "5555555555"}
 
 # Agregando una entrada
@@ -47,7 +44,7 @@ print(len(agenda))
 claves = list(agenda.keys())
 
 # Verificando existencia de clave
-print("Juan" in agenda)
+print("Juan" in agenda) # como sí existe la clave "Juan", devolverá 'true'
 
 # Eliminando una entrada
 del agenda["Jimena"]
@@ -58,6 +55,7 @@ for nombre, numero in agenda.items():
 
 # Usando .get() con manejo de excepciones
 print(agenda.get("Peter", "Clave no encontrada"))
+# como no existe la clave "Peter", devolverá el msj: Clave no encontrada
 
 # Borrando todas las entradas
 agenda.clear()
