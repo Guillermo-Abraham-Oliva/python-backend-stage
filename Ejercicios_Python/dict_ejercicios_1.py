@@ -1,22 +1,8 @@
-# Diccionario con equipos deportivos
-equipos = {
-    "Futbol": {"nombre": "Los Tigres", "jugadores": ["Carlos", "Pedro", "Luis"]},
-    "Basket": {"nombre": "Águilas", "jugadores": ["Ana", "Marta", "Julia"]}
-}
+import os
+os.system('clear' if os.name == 'posix' else 'cls')
 
-# Recorriendo el diccionario
-for deporte, equipo in equipos.items():
-    print(f"{equipo['nombre']}: {', '.join(equipo['jugadores'])}")
-
-# Agregando un nuevo equipo
-equipos["Voley"] = {"nombre": "Las Panteras", "jugadores": ["Gabriela", "Sofía", "Elena"]}
-
-# Actualizando la lista de jugadores
-equipos["Futbol"]["jugadores"].append("Miguel")
-print(equipos)
-
-
-'''🔹 Uso futuro en backend: 50%
+'''Diccionarios básicos (Uso en backend: 50%)
+🔹 Uso futuro en backend: 50%
 Los diccionarios son esenciales en Python, pero en backend los datos se manejan con bases de datos (SQL, NoSQL) y ORM. Se usará en casos puntuales para estructuras temporales.
 ⚠️ Advertencia: En backend, los diccionarios se reemplazan con bases de datos SQL/NoSQL y ORM.
 ✅ Solo aprende lo justo: Sintaxis básica y manipulación de datos en memoria.'''
