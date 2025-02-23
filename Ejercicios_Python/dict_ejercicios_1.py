@@ -19,7 +19,7 @@ print(mi_diccionario["nombre"])
 # Verificando si una clave existe
 print("edad" in mi_diccionario) # como no existe la clave "edad", devolverá 'false'
 
-###### Creando un diccionario ######
+###### Creando un diccionario llamado 'estudiante' ######
 estudiante = {"nombre": "Juan", "edad": 25, "materia": "Matemáticas"}
 
 # Actualizando un valor
@@ -31,7 +31,6 @@ del estudiante["materia"]
 # Imprimiendo todas las claves
 print(estudiante.keys())
 
-###### Creando otro diccionario ######
 agenda = {"Juan": "1234567890", "Joana": "9876543210", "Jimena": "5555555555"}
 
 # Agregando una entrada
