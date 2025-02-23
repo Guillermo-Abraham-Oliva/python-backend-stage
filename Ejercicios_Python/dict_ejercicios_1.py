@@ -31,8 +31,10 @@ del estudiante["materia"]
 # Imprimiendo claves
 print(estudiante.keys())
 
-############################
-# Creando otro diccionario #
+################################
+### Creando otro diccionario ###
+################################
+
 agenda = {"Juan": "1234567890", "Joana": "9876543210", "Jimena": "5555555555"}
 
 # Agregando una entrada
