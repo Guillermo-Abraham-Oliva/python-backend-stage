@@ -7,18 +7,20 @@ Las listas de diccionarios no se usan directamente en backend, ya que los datos 
 ⚠️ Advertencia: En backend, los datos estructurados se guardan en bases de datos (SQL o NoSQL), no en listas de diccionarios.
 ✅ Solo aprende lo justo: Cómo acceder, recorrer y modificar listas de diccionarios.'''
 
-# Lista de diccionarios de estudiantes
-estudiantes = [{"nombre": "Carlos", "edad": 22}, {"nombre": "Laura", "edad": 24}]
+# LISTA de diccionarios de estudiantes
+lista_estudiantes = [{"nombre": "Carlos", "edad": 22}, {"nombre": "Laura", "edad": 24}]  # ✅ 85%
 
 # Recorriendo la lista
-for estudiante in estudiantes:
-    print(f"{estudiante['nombre']} - {estudiante['edad']} años")
+for estudiante in lista_estudiantes:                              # ✅ 85%
+    print(f"{estudiante['nombre']} - {estudiante['edad']} años")  # ✅ 85%
 
 # Agregando un nuevo estudiante
-estudiantes.append({"nombre": "Mariana", "edad": 21}) # esta agregando un diccio a la lista
+lista_estudiantes.append({"nombre": "Mariana", "edad": 21})  # esta agregando un diccio a la lista  # ✅ 80%
 
 # Eliminando un estudiante
-del estudiantes[1]
+del lista_estudiantes[1]  # Elimina "Laura"  ✅ 80%
 
 # Actualizando edad del primer estudiante
-estudiantes[0]["edad"] = 23
+lista_estudiantes[0]["edad"] = 23  # es con '[][]' porque es una Lista  ✅ 85%
+
+print(lista_estudiantes)
