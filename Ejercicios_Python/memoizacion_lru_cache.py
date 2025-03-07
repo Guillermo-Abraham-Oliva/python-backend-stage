@@ -36,4 +36,16 @@ def fibonacci_cache(n):
 - No es compartida entre múltiples instancias en backend distribuido.
 
 ✅ Alternativa moderna en backend: Usar Redis en FastAPI o Django.
+
+🔹   Uso en backend profesional: ---> 10%
+⚠️ **Advertencia:** El decorador `@lru_cache` es útil para **memorización en cálculos repetitivos**, pero **en backend real se usan Redis o bases de datos cacheadas en lugar de esto**.  
+
+✅ **Úsalo para:**  
+✔️ Optimizar funciones de alto costo computacional en scripts pequeños.  
+
+❌ **Evítalo cuando:**  
+❌ Necesites persistencia real de caché en backend (usa Redis, Memcached o FastAPI con `Depends`).  
+❌ Quieras manejar caché en múltiples instancias de un servidor.  
+
+📌 **Conclusión:** Solo aprende lo justo sobre `@lru_cache`. **En backend real, usa Redis para almacenamiento en caché eficiente.**
 '''

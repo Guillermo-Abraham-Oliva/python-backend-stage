@@ -1,0 +1,92 @@
+import os
+os.system('clear')
+
+'''
+1️⃣ FUNCIONES LAMBDA
+
+🔹 Uso en backend profesional: 20%
+
+🔹 ✅Se usan en casos pequeños y específicos, como ordenamiento o filtrado rápido:
+✔️ Funciones anónimas en map(), filter(), sorted(), etc.
+✔️ Operaciones matemáticas pequeñas que no necesiten validacion.
+✔️ Pequeñas transformaciones de datos en APIs.
+✔️ solo deben usarse en casos extremadamente simples.
+
+⚠️ Advertencia: No abuses de las funciones lambda. 
+En código profesional, la legibilidad es más importante que la concisión. 
+Para lógica compleja, usa funciones normales (def).
+📢 Regla general: Si dudas sobre usar lambda, usa def.
+
+❌ Evita Usarlas: 
+❌ Para lógica compleja
+❌ múltiples operaciones
+❌ Necesites estructuras if-elif-else (solo if y else pueden ser)
+❌ Requieras try-except para manejar errores
+❌ cuando necesites documentación o comentarios...lambda no admite docstrings.
+❌ cuando necesites reutilizar la función
+❌ Evita Reemplazar funciones normales con ellas sin motivo claro.
+'''
+
+# Pasaremos esta funcion a una lambda mas adelante
+def area_triangulo(base, altura):
+    return (base * altura / 2)
+
+triangulo1 = area_triangulo(5,7)
+triangulo2 = area_triangulo(9,6)
+
+print(triangulo1, triangulo2)
+
+
+# pasando esa funcion a lambda:
+area_triangulo = lambda base, altura: (base * altura / 2)
+
+triangulo1 = area_triangulo(5,7)
+triangulo2 = area_triangulo(9,6)
+
+print(triangulo1, triangulo2)
+
+###############################################################################
+####### Más ejemplos de lambda ################################################
+
+# ✔️ Operaciones matemáticas simples
+suma = lambda x, y: x + y
+multiplicar = lambda a, b: a * b
+
+# ✔️ Uso en sorted(), map(), filter()
+numeros = [5, 2, 8, 1]
+ordenados = sorted(numeros, key=lambda x: x)  # Orden ascendente
+
+pares = list(filter(lambda x: x % 2 == 0, numeros))  # Filtrar pares
+
+cuadrados = list(map(lambda x: x**2, numeros))  # Elevar al cuadrado
+✔️ Uso con max() y min()
+
+python
+Copiar
+Editar
+palabras = ["manzana", "pera", "banana"]
+mas_larga = max(palabras, key=lambda x: len(x))
+⚠️ Cuándo lambda no es suficiente
+❌ No puede tener múltiples operaciones o asignaciones
+
+python
+Copiar
+Editar
+# 🚫 ERROR: No puedes hacer esto con lambda
+lambda x: a = x * 2  # No permite asignaciones de variables
+❌ No puede tener if-elif-else
+
+python
+Copiar
+Editar
+# 🚫 ERROR: No puedes usar elif en una lambda
+lambda x: "Positivo" if x > 0 elif x == 0 "Cero" else "Negativo"
+✅ Alternativa correcta con lambda (solo if-else)
+
+python
+Copiar
+Editar
+signo = lambda x: "Positivo" if x > 0 else "Negativo o Cero"
+
+📌 Conclusión:
+Sí, todas las funciones lambda serán similares a lambda base, altura: (base * altura / 2). Solo se pueden usar para expresiones simples y de una sola línea. Para todo lo demás, usa def.
