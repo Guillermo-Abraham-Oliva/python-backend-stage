@@ -2,9 +2,9 @@ import os
 os.system('clear')
 
 '''
-1️⃣ FUNCIONES LAMBDA
+1️⃣ FUNCIONES LAMBDA TEORIA BASICA !
 
-🔹 Uso en backend profesional: 20%
+🔹 Uso en backend profesional: 25%
 
 🔹 ✅Se usan en casos pequeños y específicos, como ordenamiento o filtrado rápido:
 ✔️ Funciones anónimas en map(), filter(), sorted(), etc.
@@ -37,7 +37,7 @@ triangulo2 = area_triangulo(9,6)
 print(triangulo1, triangulo2)
 
 
-# pasando esa funcion a lambda:
+# pasando esa funcion a lambda, queda:
 area_triangulo = lambda base, altura: (base * altura / 2)
 
 triangulo1 = area_triangulo(5,7)
@@ -52,41 +52,107 @@ print(triangulo1, triangulo2)
 suma = lambda x, y: x + y
 multiplicar = lambda a, b: a * b
 
-# ✔️ Uso en sorted(), map(), filter()
-numeros = [5, 2, 8, 1]
-ordenados = sorted(numeros, key=lambda x: x)  # Orden ascendente
 
+# ✔️ Uso en sorted()
+usuarios = [
+    {"nombre": "Carlos", "edad": 30},
+    {"nombre": "Ana", "edad": 25},
+    {"nombre": "Luis", "edad": 35}
+]
+
+# Ordenar por edad
+# 📢 POR DEFECTO sorted actua ---> de menor a mayor
+usuarios_ordenados = sorted(usuarios, key=lambda x: x["edad"]) 
+print(usuarios_ordenados)
+
+    # Salida:
+    #       [
+    #          {'nombre': 'Ana', 'edad': 25},
+    #          {'nombre': 'Carlos', 'edad': 30},
+    #          {'nombre': 'Luis', 'edad': 35}
+    #       ]
+# ✅ Útil cuando obtienes datos JSON de una API y necesitas ordenarlos antes de enviarlos.
+# ✅ Puedes cambiar x["edad"] por cualquier otro campo (por ejemplo, x["nombre"]).
+
+
+# Ordenar registros con valores NULOS (incompletos)
+# Si tienes datos que pueden ser None (valores nulos), puedes evitar errores con un lambda.
+# 🔹 Uso futuro en backend profesional: 70%
+# ✅ Útil cuando trabajas con datos que pueden venir incompletos desde una API o BD.
+# ✅ Evita errores al comparar None con enteros.
+
+usuarios = [
+    {"nombre": "Carlos", "edad": 30},
+    {"nombre": "Ana", "edad": None},
+    {"nombre": "Luis", "edad": 25}
+]
+
+# Ordenar, moviendo los None al final
+usuarios_ordenados = sorted(usuarios, key=lambda x: (x["edad"] is None, x["edad"]))
+print(usuarios_ordenados)
+            # Salida:
+            # [
+            #     {'nombre': 'Luis', 'edad': 25},
+            #     {'nombre': 'Carlos', 'edad': 30},
+            #     {'nombre': 'Ana', 'edad': None}
+            # ]
+
+# EXPLICACION !!!
+# "is None" → Devuelve True si lo es, False si no.
+
+        # Ejemplo con datos:
+            # x["edad"]	(x["edad"] is None, x["edad"])
+            # 30	(False, 30)
+            # None	(True, None)
+            # 25	(False, 25)
+# ¿Cómo funciona esto en sorted()?
+# Regla en sorted()
+# 📌 Python ordena primero por el primer valor de la tupla.
+# 📌 Si hay empate, usa el segundo valor.
+
+# Entonces, al usar key=lambda x: (x["edad"] is None, x["edad"]), estamos diciendo:
+# ✅ Primero, coloca los que NO son None (📢False va antes que True).
+# ✅ Luego, ordénalos por edad.
+
+# Si quiero los None primero:
+# usuarios_ordenados = sorted(usuarios, key=lambda x: (not x["edad"] is None, x["edad"]))
+
+
+# Ordenar de mayor a menor (ejemplo: ordenar productos por precio).
+productos = [
+    {"nombre": "Laptop", "precio": 1200},
+    {"nombre": "Mouse", "precio": 25},
+    {"nombre": "Teclado", "precio": 50}
+]
+
+# Ordenar de mayor a menor precio
+productos_ordenados = sorted(productos, key=lambda x: x["precio"], reverse=True)
+print(productos_ordenados)
+
+    # Salida:
+    #       [
+    #           {'nombre': 'Laptop', 'precio': 1200},
+    #           {'nombre': 'Teclado', 'precio': 50},
+    #           {'nombre': 'Mouse', 'precio': 25}
+    #       ]
+# ✅ Útil para mostrar los productos más caros primero.
+# ✅ En backend, esto se usa mucho en e-commerce y dashboards.
+
+
+
+# ✔️ Uso en map(), filter()
+numeros = [5, 2, 8, 1]
+cuadrados = list(map(lambda x: x**2, numeros))  # Elevar al cuadrado
 pares = list(filter(lambda x: x % 2 == 0, numeros))  # Filtrar pares
 
-cuadrados = list(map(lambda x: x**2, numeros))  # Elevar al cuadrado
-✔️ Uso con max() y min()
-
-python
-Copiar
-Editar
+# ✔️ Uso con max() y min()
 palabras = ["manzana", "pera", "banana"]
 mas_larga = max(palabras, key=lambda x: len(x))
-⚠️ Cuándo lambda no es suficiente
-❌ No puede tener múltiples operaciones o asignaciones
 
-python
-Copiar
-Editar
-# 🚫 ERROR: No puedes hacer esto con lambda
-lambda x: a = x * 2  # No permite asignaciones de variables
-❌ No puede tener if-elif-else
-
-python
-Copiar
-Editar
-# 🚫 ERROR: No puedes usar elif en una lambda
-lambda x: "Positivo" if x > 0 elif x == 0 "Cero" else "Negativo"
-✅ Alternativa correcta con lambda (solo if-else)
-
-python
-Copiar
-Editar
+# ✅ En lambda solo if-else (NO elif)
 signo = lambda x: "Positivo" if x > 0 else "Negativo o Cero"
 
-📌 Conclusión:
-Sí, todas las funciones lambda serán similares a lambda base, altura: (base * altura / 2). Solo se pueden usar para expresiones simples y de una sola línea. Para todo lo demás, usa def.
+# 📌 Conclusión:
+# Todas las funciones lambda serán similares a lo anterior. 
+# Solo se pueden usar para expresiones simples y de una sola línea. 
+# Para todo lo demás, usa def.
