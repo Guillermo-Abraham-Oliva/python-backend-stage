@@ -1,6 +1,8 @@
 import os
 os.system('clear' if os.name == 'posix' else 'cls')
 
+# ESTO NO SE USA EN ABSOLUTO EN LO PROFESIONAL
+
 import time
 import itertools
 relojillo = itertools.cycle(['-', '\\', '|', '/'])

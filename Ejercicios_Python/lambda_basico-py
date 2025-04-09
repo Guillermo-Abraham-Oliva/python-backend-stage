@@ -1,29 +1,31 @@
 import os
 os.system('clear')
 
+from pprint import pprint # para imprimir dict y list bonitos y facilmente !
+
 '''
-1️⃣ FUNCIONES LAMBDA TEORIA BASICA !
+------- FUNCIONES LAMBDA TEORIA BASICA ! --------
 
 🔹 Uso en backend profesional: 25%
 
-🔹 ✅Se usan en casos pequeños y específicos, como ordenamiento o filtrado rápido:
-✔️ Funciones anónimas en map(), filter(), sorted(), etc.
-✔️ Operaciones matemáticas pequeñas que no necesiten validacion.
-✔️ Pequeñas transformaciones de datos en APIs.
-✔️ solo deben usarse en casos extremadamente simples.
+✅Se usan en casos pequeños y específicos, como ordenamiento o filtrado rápido:
+    ✔️ Funciones anónimas en map(), filter(), sorted(), etc.
+    ✔️ Operaciones matemáticas pequeñas que no necesiten validacion.
+    ✔️ Pequeñas transformaciones de datos en APIs.
+    ✔️ solo deben usarse en casos extremadamente simples.
 
 ⚠️ Advertencia: No abuses de las funciones lambda. 
 En código profesional, la legibilidad es más importante que la concisión. 
 Para lógica compleja, usa funciones normales (def).
-📢 Regla general: Si dudas sobre usar lambda, usa def.
+📢 Regla general: Si dudas sobre usar lambda ---> usa def.
 
 ❌ Evita Usarlas: 
 ❌ Para lógica compleja
 ❌ múltiples operaciones
-❌ Necesites estructuras if-elif-else (solo if y else pueden ser)
+❌ Si necesites estructuras if-elif-else (lambda solo pued contener if y else)
 ❌ Requieras try-except para manejar errores
 ❌ cuando necesites documentación o comentarios...lambda no admite docstrings.
-❌ cuando necesites reutilizar la función
+❌ cuando necesites reutilizar la función lambda
 ❌ Evita Reemplazar funciones normales con ellas sin motivo claro.
 '''
 
@@ -33,27 +35,25 @@ def area_triangulo(base, altura):
 
 triangulo1 = area_triangulo(5,7)
 triangulo2 = area_triangulo(9,6)
-
 print(triangulo1, triangulo2)
 
 
 # pasando esa funcion a lambda, queda:
-area_triangulo = lambda base, altura: (base * altura / 2)
+area_triangulo = lambda base, altura: (base * altura / 2) # ❌ 10% 
 
 triangulo1 = area_triangulo(5,7)
 triangulo2 = area_triangulo(9,6)
-
-print(triangulo1, triangulo2)
+print(triangulo1, triangulo2), print()
 
 ###############################################################################
 ####### Más ejemplos de lambda ################################################
 
-# ✔️ Operaciones matemáticas simples
+# ✔️ Operaciones matemáticas simples ❌ 10% 
 suma = lambda x, y: x + y
 multiplicar = lambda a, b: a * b
 
 
-# ✔️ Uso en sorted()
+# ✔️ Uso en sorted() 
 usuarios = [
     {"nombre": "Carlos", "edad": 30},
     {"nombre": "Ana", "edad": 25},
@@ -61,9 +61,9 @@ usuarios = [
 ]
 
 # Ordenar por edad
-# 📢 POR DEFECTO sorted actua ---> de menor a mayor
-usuarios_ordenados = sorted(usuarios, key=lambda x: x["edad"]) 
-print(usuarios_ordenados)
+# 📢 POR DEFECTO sorted actúa ---> de menor a mayor
+usuarios_ordenados = sorted(usuarios, key=lambda x: x["edad"]) # ✅ 85%
+pprint(usuarios_ordenados), print()
 
     # Salida:
     #       [
@@ -88,8 +88,8 @@ usuarios = [
 ]
 
 # Ordenar, moviendo los None al final
-usuarios_ordenados = sorted(usuarios, key=lambda x: (x["edad"] is None, x["edad"]))
-print(usuarios_ordenados)
+usuarios_ordenados = sorted(usuarios, key=lambda x: (x["edad"] is None, x["edad"])) # ✅ 70% 
+pprint(usuarios_ordenados), print()
             # Salida:
             # [
             #     {'nombre': 'Luis', 'edad': 25},
@@ -98,24 +98,17 @@ print(usuarios_ordenados)
             # ]
 
 # EXPLICACION !!!
-# "is None" → Devuelve True si lo es, False si no.
-
-        # Ejemplo con datos:
-            # x["edad"]	(x["edad"] is None, x["edad"])
-            # 30	(False, 30)
-            # None	(True, None)
-            # 25	(False, 25)
-# ¿Cómo funciona esto en sorted()?
 # Regla en sorted()
-# 📌 Python ordena primero por el primer valor de la tupla.
-# 📌 Si hay empate, usa el segundo valor.
+# 📌 Python ordena primero por el primer valor de la tupla: ordenar por edad
+# 📌 Si hay empate, usa el segundo valor, en este caso, si es None.
 
 # Entonces, al usar key=lambda x: (x["edad"] is None, x["edad"]), estamos diciendo:
-# ✅ Primero, coloca los que NO son None (📢False va antes que True).
-# ✅ Luego, ordénalos por edad.
+# ✅ Ordena todo por "edad"
+# ✅ Si hay alguna "edad" con valor None, ponla al ultimo.-------------------------
 
 # Si quiero los None primero:
-# usuarios_ordenados = sorted(usuarios, key=lambda x: (not x["edad"] is None, x["edad"]))
+usuarios_ordenados = sorted(usuarios, key=lambda x: (not x["edad"] is None, x["edad"])) # ✅ 70%
+pprint(usuarios_ordenados), print()
 
 
 # Ordenar de mayor a menor (ejemplo: ordenar productos por precio).
@@ -126,8 +119,8 @@ productos = [
 ]
 
 # Ordenar de mayor a menor precio
-productos_ordenados = sorted(productos, key=lambda x: x["precio"], reverse=True)
-print(productos_ordenados)
+productos_ordenados = sorted(productos, key=lambda x: x["precio"], reverse=True) # ✅ 90%
+pprint(productos_ordenados), print()
 
     # Salida:
     #       [
@@ -139,18 +132,13 @@ print(productos_ordenados)
 # ✅ En backend, esto se usa mucho en e-commerce y dashboards.
 
 
-
-# ✔️ Uso en map(), filter()
+# ✔️ Uso de lambda en map(), filter()
 numeros = [5, 2, 8, 1]
-cuadrados = list(map(lambda x: x**2, numeros))  # Elevar al cuadrado
-pares = list(filter(lambda x: x % 2 == 0, numeros))  # Filtrar pares
-
-# ✔️ Uso con max() y min()
-palabras = ["manzana", "pera", "banana"]
-mas_larga = max(palabras, key=lambda x: len(x))
+cuadrados = list(map(lambda x: x**2, numeros))  # Elevar al cuadrado  # ⚠️ 35%
+pares = list(filter(lambda x: x % 2 == 0, numeros))  # Filtrar pares  # ⚠️ 35%
 
 # ✅ En lambda solo if-else (NO elif)
-signo = lambda x: "Positivo" if x > 0 else "Negativo o Cero"
+signo = lambda x: "Positivo" if x > 0 else "Negativo o Cero"  # ⚠️ 20%
 
 # 📌 Conclusión:
 # Todas las funciones lambda serán similares a lo anterior. 

@@ -85,7 +85,7 @@ print(f" --- Resta: {operaciones.restar(10, 4)}\n")
 # ✅ Relevancia futura: 10%
 # ✔ Listas y diccionarios siguen siendo útiles para manejar estructuras de datos temporales en memoria.
 
-ventas = []
+ventas = []    # es una lista y tendra dentro tantos diccios como ventas se realicen -> agregar_venta()
 
 def agregar_venta(producto, precio):
     venta = {"producto": producto, "precio": precio}
