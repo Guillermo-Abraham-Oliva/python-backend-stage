@@ -2,6 +2,18 @@
 # JSON (JavaScript Object Notation) es un formato de texto 
 # **para almacenar y transmitir datos** en forma de **diccionarios y listas**
 
+
+# Ej simple json:
+
+import json
+
+numeros = [2, 3, 5, 7, 11, 13]
+filename = 'numeros.json'  # Aquí decides cómo se va a llamar el archivo
+with open(filename, 'w') as f_obj:  # Abre (o crea) un archivo con ese nombre en modo escritura.
+    json.dump(numeros, f_obj) # Convierte la lista de Python a texto JSON
+
+
+
 #########################################################################################
 #### **1️⃣ Crear un archivo JSON con `json.dump`**
 
