@@ -1,0 +1,13 @@
+{
+  "total_activos": 4,
+  "valor_total_stock": 896.5,
+  "top3_stock": [
+    101,
+    105,
+    104
+  ],
+  "ids_baja": [
+    103
+  ],
+  "conteo_bajas": 1
+}

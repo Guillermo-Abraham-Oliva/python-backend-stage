@@ -1,0 +1,34 @@
+[
+  {
+    "id": 104,
+    "nombre": "Cables",
+    "precio": 5.0,
+    "stock": 100,
+    "activo": true,
+    "precio_final": 4.0
+  },
+  {
+    "id": 102,
+    "nombre": "Ratón DUP",
+    "precio": 14.5,
+    "stock": 5,
+    "activo": true,
+    "precio_final": 14.5
+  },
+  {
+    "id": 105,
+    "nombre": "Auriculares",
+    "precio": 18.0,
+    "stock": 12,
+    "activo": true,
+    "precio_final": 18.0
+  },
+  {
+    "id": 101,
+    "nombre": "Teclado",
+    "precio": 26.0,
+    "stock": 8,
+    "activo": true,
+    "precio_final": 26.0
+  }
+]

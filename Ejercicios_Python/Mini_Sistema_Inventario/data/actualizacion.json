@@ -1,0 +1,7 @@
+[
+  {"id": 101, "precio": 26, "stock": 8},
+  {"id": 104, "descuento": 0.20},
+  {"id": 105, "nombre": "Auriculares", "precio": "18", "stock": 12, "activo": true},
+  {"id": 103, "baja": true},
+  {"id": 102, "precio": 14.5}
+]
