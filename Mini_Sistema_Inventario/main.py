@@ -1,4 +1,4 @@
-# Mini Sistema de Inventario
+# Mini Sistema de Inventario con normalización y generación de reporte
 
 from __future__ import annotations
 from pathlib import Path
