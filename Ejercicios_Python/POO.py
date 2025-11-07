@@ -1,5 +1,5 @@
 class persona:
-    def __init__(self, nombre, edad, profesion):
+    def __init__(self, nombre: str, edad: int, profesion: str):
         self.nombre = nombre
         self.edad = edad
         self.profesion = profesion
@@ -11,7 +11,7 @@ print(persona1.nombre, persona1.edad, persona1.profesion)
 print(persona2.nombre, persona2.edad, persona2.profesion)
 
 class fruta:
-    def __init__(self, nombre, color, precio):
+    def __init__(self, nombre: str, color: str, precio: float):
         self.nombre = nombre
         self.color = color
         self.precio = precio
@@ -19,14 +19,14 @@ class fruta:
 manzana = fruta("manzana", "rojo", 2.50)
 kiwi = fruta("kiwi", "verde", 3.90)
 
-#####################################################################################
+#####################################################################
 class Fruta:
     def __init__(self, nombre: str, color: str, precio: float):
         self.nombre = nombre
         self.color = color
         self.precio = precio
 
-    def descripcion(self) -> str:  #este self hace ref al self anterior: conecta
+    def descripcion(self) -> str:  #este self hace ref al self anterior: CONECTA
         return f"{self.nombre.capitalize()} de color {self.color}, cuesta €{self.precio:.2f}"
 
 manzana = Fruta("manzana", "rojo", 2.50)
@@ -64,14 +64,18 @@ class Persona:
 # Uso pro estimado (con dataclass/Pydantic/ORM): ~90%
 # =========================
 
-@dataclass
 class Libro:
-    titulo: str
-    autor: str
-    anio: int
+    def __init__(self, titulo: str, autor: str, anio: int):
+        self.titulo = titulo
+        self.autor = autor
+        self.anio = anio
 
     def info(self) -> str:
         return f"«{self.titulo}», {self.autor} ({self.anio})"
+
+libro_1 = Libro("Hoy", "Guille", 2025)
+tit = libro_1.info() # se accede al metodo 'info' (funcion interna) POR MEDIO DEL OBJETO CREADO ()libro_1)
+print(tit)
 
 
 # =========================

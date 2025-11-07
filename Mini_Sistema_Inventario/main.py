@@ -29,20 +29,20 @@ def lst_a_dict(lst: List[Dict[str, Any]]) -> Dict[int, Dict[str, Any]]:
 
 def actualizar(inv: dict[int, Dict[str, Any]], 
                update: List[Dict[str, Any]]) -> Tuple[Dict[int, Dict[str, Any]], List[int]]:
-               # HAY QUE USAR TUPLA CUANDO SE RETORNA MAS DE 1 COSA
+               # SIEMPRE TUPLA CUANDO HAY MAS DE 1 RETORNO
     ids_baja: List[int] = []
     for upd in update:
         pid = upd.get("id")
         if pid is None: #   sin id -> continue
             continue
-        if upd.get("baja") and pid in inv: # si es una *BAJA* y el id esta en esa upd
+        if upd.get("baja") and pid in inv: # si es una BAJA y el id esta en esa upd
             inv.pop(pid, None)
             ids_baja.append(pid)
             continue
-        if pid in inv:  # actualizacion normal: agrega solo los campos que NO son id (para no tocar el id)
+        if pid in inv:  # ACTUALIZACION: agrega solo los campos que NO son id (no tocar el id)
             parche = {k: v for k, v in upd.items() if k != "id"}
             inv[pid] = inv[pid] | parche  # o inv[pid].update(parche)
-        else:   # si no esta el pid en inv -> es un *ALTA* (crear solo si trae mínimos)
+        else:   # si no esta el pid en inv -> es un ALTA (crear solo si trae mínimos)
             if all(k in upd for k in ("nombre", "precio", "stock")):
                 inv[pid] = upd.copy() # para que quede independiente de upd (por si upd cambia). Entonces con la copia superficial ya queda chafado fijo sin posibilidad de error.
     return inv, ids_baja
@@ -51,16 +51,16 @@ def a_float(precio: Any) -> float:
     if isinstance(precio, (int, float)):
         return float(precio)
     if isinstance(precio, str):
-        precio = precio.replace(",", ".") # se reemplaza , por .
+        precio = precio.replace(",", ".")
         precio = float("".join(precio.split())) # se separa en cada espacio, se une, y se pasa a decimal
         return precio
-    raise ValueError(f"precio inválido {precio!r}") # raise en bandera roja / !r dice que se reproduzca tal cual es, con espacios etc.
+    raise ValueError(f"precio inválido {precio!r}") # !r para que se reproduzca tal cual es, con espacios etc.
 
-def a_int(x: Any) -> int:
+def a_int(x: Any) -> int: # Convwersion a entero
     if isinstance(x, int):
         return x
     if isinstance(x, float):
-        if x.is_integer():
+        if x.is_integer():  # asegurar valor entero (no acepta decimales)
             return int(x)
         raise ValueError(f"stock no entero: {x!r}")
     if isinstance(x, str):
@@ -70,15 +70,15 @@ def a_int(x: Any) -> int:
             return int(s)
     raise ValueError(f"stock inválido: {x!r}")
 
-# Normalización: ojo solo normaliza 1 diccio no un diccio anidado! (hay que mandarle de a 1)
-# convertir precio→float, stock→int, sacar descuento, calcular precio_final (hay que agregarla)
+# Normalización: solo normaliza 1 diccio no un diccio anidado! (hay que enviarle de a 1)
+# convertir precio→float, stock→int, sacar descuento, calcular precio_final
 def normalizar_producto(p: Dict[str, Any]) -> Dict[str, Any]:
     precio = a_float(p.get("precio", 0)) # guardo en la variable precio para procesar el precio
     stock = a_int(p.get("stock", 0)) # guardo en la variable stock para procesar el stock
-    descuento = p.get("descuento", 0) or 0 # guardo en la var descuento el descuento previniendo dramas con 'or 0' puesto que el 'or 0' agrega tolerancia para valores “falsy” basura tipo "", None, False.... lo convierte en 0 en vez de reventar.
+    descuento = p.get("descuento", 0) or 0 # guardo en 'descuento' previniendo bug con 'or 0' puesto que el 'or 0' agrega tolerancia para valores “falsy” basura tipo "", None, False.... lo convierte en 0 en vez de reventar.
     try:
         descuento = float(descuento) # actualizamos desceunto con descuento en float
-    except Exception:    # cualquier drama -> le doy 0.0
+    except Exception:    # cualquier incongruencia -> asigno 0.0
         descuento = 0.0
     precio_final = round(precio * (1 - descuento), 2)
     p = p.copy() # generalmente se quiere una 'versión' (no cambiar el original)!!!
@@ -88,11 +88,9 @@ def normalizar_producto(p: Dict[str, Any]) -> Dict[str, Any]:
     p["precio_final"] = precio_final # agregamos la clave "precio_final"
     return p
 
-# generar_reporte(lista_final, ids_baja) -> dict
+# generar_reporte: Contar activos, sumar su valor total, identificar los tres con más stock, anotar las bajas y su cantidad, y guardar todo eso como un dict en JSON.
 
-# En resumen: Contar activos, sumar su valor total, identificar los tres con más stock, anotar las bajas y su cantidad, y guardar todo eso como un dict en JSON.
-
-# Recibe 2 cosas:
+# Recibe:
 # lista_final: lista de productos activos y normalizados (cada uno ya con precio_final y stock).
 # ids_baja: lista con los IDs que fueron dados de baja.
 
@@ -103,17 +101,14 @@ def normalizar_producto(p: Dict[str, Any]) -> Dict[str, Any]:
 # ids_baja: lista de los IDs eliminados (bajas)	se pasa directo com argumento ids_baja
 # conteo_bajas: cant de ids_baja
                                            
-# Guardar: Una vez calculados, formar diccio con esos campos y volcar en el archivo salida/reporte.json
+# Una vez calculados, formar diccio con esos campos y volcar en el archivo salida/reporte.json
 
-# El archivo final debe contener algo así conceptualmente:
-
-# {
-#   "total_activos": 4,
-#   "valor_total_stock": 896.5,
-#   "top3_stock": [104, 105, 101],
-#   "ids_baja": [103],
-#   "conteo_bajas": 1
-# }
+# El archivo final debe contener algo así:
+# {"total_activos": 4,
+#  "valor_total_stock": 896.5,
+#  "top3_stock": [104, 105, 101],
+#  "ids_baja": [103],
+#  "conteo_bajas": 1}
 
 def generar_reporte(catalogo_final: List[Dict[str, Any]], ids_baja: List[int]) -> Dict[str, Any]:
     total_activos = len(catalogo_final)
