@@ -1,0 +1,7 @@
+[
+  {"id": 101, "nombre": "A", "precio": 25,   "stock": 10,  "activo": true},
+  {"id": 102, "nombre": "B", "precio": "15.0","stock": 30,  "activo": true},
+  {"id": 103, "nombre": "C", "precio": 200,  "stock": 5,   "activo": false},
+  {"id": 104, "nombre": "D", "precio": 5,    "stock": "100","activo": true},
+  {"id": 102, "nombre": "E", "precio": 16,   "stock": 5,   "activo": true}
+]

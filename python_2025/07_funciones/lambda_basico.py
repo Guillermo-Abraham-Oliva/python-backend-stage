@@ -1,0 +1,149 @@
+import os
+os.system('clear')
+
+from pprint import pprint # para imprimir dict y list bonitos y facilmente !
+
+'''
+------- FUNCIONES LAMBDA TEORIA BASICA ! --------
+
+Se usan en casos pequeños y específicos, como ordenamiento o filtrado rápido:
+    ✔️ Funciones anónimas en map(), filter(), sorted(), etc.
+    ✔️ Operaciones matemáticas pequeñas que no necesiten validacion.
+    ✔️ Pequeñas transformaciones de datos en APIs.
+    ✔️ solo deben usarse en casos extremadamente simples.
+
+⚠️ Advertencia: No abuses de las funciones lambda. 
+En código profesional, la legibilidad es más importante que la concisión. 
+Para lógica compleja, usa funciones normales (def).
+📢 Regla general: Si dudas sobre usar lambda ---> usa def.
+
+❌ Evita Usarlas: 
+❌ Para lógica compleja
+❌ múltiples operaciones
+❌ Si necesites estructuras if-elif-else (lambda solo pued contener if y else)
+❌ Requieras try-except para manejar errores
+❌ cuando necesites documentación o comentarios...lambda no admite docstrings.
+❌ cuando necesites reutilizar la función lambda
+❌ Evita Reemplazar funciones normales con ellas sin motivo claro.
+'''
+
+# Pasaremos esta funcion a una lambda mas adelante
+def area_triangulo(base, altura):
+    return (base * altura / 2)
+
+triangulo1 = area_triangulo(5,7)
+triangulo2 = area_triangulo(9,6)
+print(triangulo1, triangulo2)
+
+
+# pasando esa funcion a lambda, queda:
+area_triangulo = lambda base, altura: (base * altura / 2) # ❌ 10% 
+
+triangulo1 = area_triangulo(5,7)
+triangulo2 = area_triangulo(9,6)
+print(triangulo1, triangulo2)
+print()
+
+###############################################################################
+####### Más ejemplos de lambda ################################################
+
+# ✔️ Operaciones matemáticas simples ❌ 10% 
+suma = lambda x, y: x + y
+multiplicar = lambda a, b: a * b
+
+
+# ✔️ Uso en sorted() 
+usuarios = [
+    {"nombre": "Carlos", "edad": 30},
+    {"nombre": "Ana", "edad": 25},
+    {"nombre": "Luis", "edad": 35}
+]
+
+# Ordenar por edad
+# 📢 POR DEFECTO sorted actúa ---> de menor a mayor
+usuarios_ordenados = sorted(usuarios, key=lambda x: x["edad"])
+pprint(usuarios_ordenados)
+print()
+
+    # Salida:
+    #       [
+    #          {'nombre': 'Ana', 'edad': 25},
+    #          {'nombre': 'Carlos', 'edad': 30},
+    #          {'nombre': 'Luis', 'edad': 35}
+    #       ]
+# ✅ Útil cuando obtienes datos JSON de una API y necesitas ordenarlos antes de enviarlos.
+# ✅ Puedes cambiar x["edad"] por cualquier otro campo (por ejemplo, x["nombre"]).
+
+
+# Ordenar registros con valores NULOS (incompletos)
+# Si tienes datos que pueden ser None (valores nulos), puedes evitar errores con un lambda.
+# 🔹 Uso futuro en backend profesional: 70%
+# ✅ Útil cuando trabajas con datos que pueden venir incompletos desde una API o BD.
+# ✅ Evita errores al comparar None con enteros.
+
+usuarios = [
+    {"nombre": "Carlos", "edad": 30},
+    {"nombre": "Ana", "edad": None},
+    {"nombre": "Luis", "edad": 25}
+]
+
+# Ordenar, moviendo los None al final
+usuarios_ordenados = sorted(usuarios, key=lambda x: (x["edad"] is None, x["edad"])) # ✅ 70% 
+pprint(usuarios_ordenados)
+print()
+            # Salida:
+            # [
+            #     {'nombre': 'Luis', 'edad': 25},
+            #     {'nombre': 'Carlos', 'edad': 30},
+            #     {'nombre': 'Ana', 'edad': None}
+            # ]
+
+# EXPLICACION !!!
+# Regla en sorted()
+# 📌 Python ordena primero por el primer valor de la tupla: ordenar por edad
+# 📌 Si hay empate, usa el segundo valor, en este caso, si es None.
+
+# Entonces, al usar key=lambda x: (x["edad"] is None, x["edad"]), estamos diciendo:
+# ✅ Ordena todo por "edad"
+# ✅ Si hay alguna "edad" con valor None, ponla al ultimo.-------------------------
+
+# Si quiero los None primero:
+usuarios_ordenados = sorted(usuarios, key=lambda x: (not x["edad"] is None, x["edad"])) # ✅ 70%
+pprint(usuarios_ordenados)
+print()
+
+
+# Ordenar de mayor a menor (ejemplo: ordenar productos por precio).
+productos = [
+    {"nombre": "Laptop", "precio": 1200},
+    {"nombre": "Mouse", "precio": 25},
+    {"nombre": "Teclado", "precio": 50}
+]
+
+# Ordenar de mayor a menor precio
+productos_ordenados = sorted(productos, key=lambda x: x["precio"], reverse=True) # ✅ 90%
+pprint(productos_ordenados)
+print()
+
+    # Salida:
+    #       [
+    #           {'nombre': 'Laptop', 'precio': 1200},
+    #           {'nombre': 'Teclado', 'precio': 50},
+    #           {'nombre': 'Mouse', 'precio': 25}
+    #       ]
+# ✅ Útil para mostrar los productos más caros primero.
+# ✅ En backend, esto se usa mucho en e-commerce y dashboards.
+
+
+# ✔️ Uso de lambda en map(), filter()
+numeros = [5, 2, 8, 1]
+cuadrados = list(map(lambda x: x**2, numeros))  # Elevar al cuadrado  # ⚠️ 35%
+pares = list(filter(lambda x: x % 2 == 0, numeros))  # Filtrar pares  # ⚠️ 35%
+
+# ✅ En lambda solo if-else (NO elif)
+signo = lambda x: "Positivo" if x > 0 else "Negativo o Cero"  # ⚠️ 20%
+
+# 📌 Conclusión:
+# Todas las funciones lambda serán similares a lo anterior. 
+# Solo se pueden usar para expresiones simples y de una sola línea. 
+# Para todo lo demás, usa def.
