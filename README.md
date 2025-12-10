@@ -21,7 +21,7 @@ clean code, data workflows, automation via CLI, and proper logging and error han
 
 ## Main Features
 
-### **Inventory Data Pipeline**
+### Inventory Data Pipeline
 - Loads inventory and update files in JSON.
 - Normalizes and restructures data.
 - Applies updates (additions, changes, removals).
@@ -55,10 +55,10 @@ Designed for maintainability and readability.
 ---
 
 ## Repository Structure
-/
-|-- inventario_modular/ # Modular implementation (recommended)
-|-- inventario_monolitico/ # First monolithic prototype
-|-- python_exercises/ # Practice exercises and learning scripts
+
+/inventario_modular/ # Modular implementation (recommended)
+/inventario_monolitico/ # First monolithic prototype
+/python_exercises/ # Practice exercises and learning scripts
 
 
 ---
@@ -113,4 +113,6 @@ It showcases the transition from a basic script to a clean, extensible backend-s
 **Status**
 
 Active development and refinement as part of my backend training path.
+Feel free to explore the code or contact me for further details.
+
 ```
