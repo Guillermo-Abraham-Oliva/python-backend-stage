@@ -96,7 +96,7 @@ python -m inventario_modular \
 * `--top` → optional “Top N” report
 
 
-**Learning Goals**
+## Learning Goals
 
 This project was built to practice and demonstrate:
 
@@ -109,7 +109,7 @@ This project was built to practice and demonstrate:
 It showcases the transition from a basic script to a clean, extensible backend-style pipeline.
 
 
-**Status**
+## Status
 
 Active development and refinement as part of my backend training path.
 Feel free to explore the code or contact me for further details.
