@@ -114,5 +114,3 @@ It showcases the transition from a basic script to a clean, extensible backend-s
 
 Active development and refinement as part of my backend training path.
 Feel free to explore the code or contact me for further details.
-
-```
