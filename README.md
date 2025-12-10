@@ -67,10 +67,10 @@ Designed for maintainability and readability.
 
 - **Python 3.x**
 - **Standard Library Only**:
-  - `argparse` → CLI
-  - `json` → data handling
-  - `logging` → logging system
-  - `pathlib` → file paths
+  - **`argparse`** → CLI
+  - **`json`** → data handling
+  - **`logging`** → logging system
+  - **`pathlib`** → file paths
   - other built-ins where appropriate  
 No external dependencies required.
 
