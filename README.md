@@ -87,7 +87,6 @@ python -m inventario_modular \
     --salida salida/inventario_final.json \
     --top 10
 
-
 ````
 **Main CLI arguments:**
 
