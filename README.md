@@ -6,7 +6,7 @@ Designed as a real backend-style pipeline for inventory updates and transformati
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This repository groups my main Python backend work:
 
@@ -19,7 +19,7 @@ clean code, data workflows, automation via CLI, and proper logging and error han
 
 ---
 
-## 🧩 Main Features
+## Main Features
 
 ### **Inventory Data Pipeline**
 - Loads inventory and update files in JSON.
@@ -54,7 +54,7 @@ Designed for maintainability and readability.
 
 ---
 
-## 🗂 Repository Structure
+## Repository Structure
 /
 |-- inventario_modular/ # Modular implementation (recommended)
 |-- inventario_monolitico/ # First monolithic prototype
@@ -63,7 +63,7 @@ Designed for maintainability and readability.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Python 3.x**
 - **Standard Library Only**:
@@ -76,7 +76,7 @@ No external dependencies required.
 
 ---
 
-## ▶️ How to Run the Modular Pipeline
+## How to Run the Modular Pipeline
 
 Example invocation:
 
