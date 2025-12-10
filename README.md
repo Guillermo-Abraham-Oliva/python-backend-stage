@@ -56,9 +56,12 @@ Designed for maintainability and readability.
 
 ## Repository Structure
 
-/inventario_modular/ # Modular implementation (recommended)
-/inventario_monolitico/ # First monolithic prototype
-/python_exercises/ # Practice exercises and learning scripts
+## Repository Structure
+
+```text
+/inventario_modular/       # Modular implementation (recommended)
+/inventario_monolitico/    # First monolithic prototype
+/python_exercises/         # Practice exercises and learning scripts
 
 
 ---
