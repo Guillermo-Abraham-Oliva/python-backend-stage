@@ -116,34 +116,34 @@ Each stage will be developed in separate repositories to maintain a clean and pr
 
 The roadmap I will follow consists of:
 
-  BLOCK 1 — FOUNDATIONS:
-    * **HTML** Fundamentals
-    * **CSS** Fundamentals
-    * Core **JavaScript** (ES6+)
-    * Small **JavaScript Projects** (DOM, events, components, fetch, state basics)
+BLOCK 1 — FOUNDATIONS:
+  * **HTML** Fundamentals
+  * **CSS** Fundamentals
+  * Core **JavaScript** (ES6+)
+  * Small **JavaScript Projects** (DOM, events, components, fetch, state basics)
   
-  BLOCK 2 — REAL FRONTEND
-    * **React** – Component model, hooks, context, basic state architecture
-    * **TypeScript** – Strong typing, interfaces, generics, type-safe JS
-    * **Next.js** – File-based routing, server-side rendering, server actions, API routes
-    * **Next.js Project** – First real-world frontend/full-stack capable app
+BLOCK 2 — REAL FRONTEND
+  * **React** – Component model, hooks, context, basic state architecture
+  * **TypeScript** – Strong typing, interfaces, generics, type-safe JS
+  * **Next.js** – File-based routing, server-side rendering, server actions, API routes
+  * **Next.js Project** – First real-world frontend/full-stack capable app
   
-  BLOCK 3 — REAL BACKEND
-    * **Node.js** – Runtime fundamentals, modules, async patterns
-    * **Express.js** – REST APIs, routing, middleware, controllers
-    * **SQL** – Relational modeling, SELECT/INSERT/UPDATE, joins, indexing
-    * **Backend Project (API)** – CRUD endpoints, architecture, error handling
+BLOCK 3 — REAL BACKEND
+  * **Node.js** – Runtime fundamentals, modules, async patterns
+  * **Express.js** – REST APIs, routing, middleware, controllers
+  * **SQL** – Relational modeling, SELECT/INSERT/UPDATE, joins, indexing
+  * **Backend Project (API)** – CRUD endpoints, architecture, error handling
   
-  BLOCK 4 — FULL-STACK PROFESSIONAL
-    * **ORM Prisma + Database Migrations**
-    * **Authentication + Basic Security** (sessions, JWT, hashing, input validation)
-    * **Full-Stack Final Project** integrating:
-         - Next.js
-         - Node.js + Express
-         - SQL + Prisma
-         - Auth + protected routes
-         - Deployment-ready structure
-    * **Basic Testing** (unit tests, API tests, component tests)
+BLOCK 4 — FULL-STACK PROFESSIONAL
+  * **ORM Prisma + Database Migrations**
+  * **Authentication + Basic Security** (sessions, JWT, hashing, input validation)
+  * **Full-Stack Final Project** integrating:
+    - Next.js
+    - Node.js + Express
+    - SQL + Prisma
+    - Auth + protected routes
+    - Deployment-ready structure
+  * **Basic Testing** (unit tests, API tests, component tests)
 
 
 
