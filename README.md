@@ -63,7 +63,7 @@ Designed for maintainability and readability.
 /inventario_monolitico/    # First monolithic prototype
 /python_exercises/         # Practice exercises and learning scripts
 
-
+```
 ---
 
 ## Tech Stack
