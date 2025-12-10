@@ -4,8 +4,9 @@ Python backend project focused on data processing and automation.
 Includes a modular architecture, a full CLI interface, JSON merging workflow, data validation, logging system, and reporting tools.  
 Designed as a real backend-style pipeline for inventory updates and transformations.
 
+---
 
-Overview
+## Overview
 
 This repository groups my main Python backend work:
 
