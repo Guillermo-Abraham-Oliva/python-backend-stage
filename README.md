@@ -131,57 +131,6 @@ It showcases the transition from a basic script to a clean, extensible backend-s
 
 ---
 
-## What’s Next (Roadmap)
-
-Having completed this Python backend learning stage, the next phase of my full-stack development path will focus on the modern JavaScript/TypeScript ecosystem.
-Each stage will be developed in **separate repositories**, maintaining a clean and professional progression history.
-
-The roadmap I will follow consists of:
-
----
-
-### **BLOCK 1 — FOUNDATIONS**
-
-1. **Git** – version control fundamentals
-2. **HTML** – structure, semantics, layout basics
-3. **CSS** – styles, responsive design, positioning
-4. **JavaScript (ES6+)** – variables, functions, arrays, objects, promises
-5. **JavaScript Projects** – DOM, events, components, fetch, basic state patterns
-
----
-
-### **BLOCK 2 — REAL FRONTEND**
-
-6. **React** – components, hooks, props/state patterns, context
-7. **TypeScript** – types, interfaces, generics, type-safe components
-8. **Next.js** – routing, server actions, SSR/SSG, layouts
-9. **Next.js Project** – first production-style frontend/full-stack capable app
-
----
-
-### **BLOCK 3 — REAL BACKEND**
-
-10. **Node.js** – runtime fundamentals, modules, async workflows
-11. **Express.js** – REST API design, routing, middleware, controllers
-12. **SQL** – relational modeling, normalization, joins, indexing
-13. **Backend API Project** – CRUD, architecture, error handling, best practices
-
----
-
-### **BLOCK 4 — FULL-STACK PROFESSIONAL**
-
-14. **ORM Prisma** + migrations – schema, migrations, type-safe queries
-15. **Auth + Basic Security** – sessions/JWT, hashing, input validation
-16. **Full-Stack Final Project**, integrating:
-
-    * Next.js
-    * Node.js + Express
-    * SQL + Prisma
-    * Auth + protected routes
-    * Deployment-ready architecture
-17. **Basic Testing** – unit tests, API tests, component testing
-
----
 
 This roadmap represents the next complete stage toward becoming a professional full-stack developer.
 
