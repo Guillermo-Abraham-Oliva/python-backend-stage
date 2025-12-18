@@ -132,8 +132,4 @@ It showcases the transition from a basic script to a clean, extensible backend-s
 ---
 
 
-This roadmap represents the next complete stage toward becoming a professional full-stack developer.
-
----
-
 
