@@ -60,5 +60,5 @@ def main() -> int:
     setup_logging() # (desde logging_config.py)
     return run_seguro(run, parse_args()) # se le pasa 'run' que orquesta todo y 'parse_args' (el espacio de nombres definido para la cli). En run_seguro, el espacio de nombres es *Args de run
 
-if __name__ == "__main__":
+if __name__ == "__main__": # Guard de ejecución
     raise SystemExit(main())   # Cerrar programa devolviendo código de salida

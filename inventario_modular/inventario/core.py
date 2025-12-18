@@ -19,10 +19,10 @@ def actualizar(inv: dict[int, dict[str, Any]],
             inv.pop(pid, None)
             ids_baja.append(pid)
             continue
-        if pid in inv:
+        if pid in inv: # actualización
             parche = {k: v for k, v in upd.items() if k != "id"}
             inv[pid].update(parche)  # patrón más usado que |
-        else:
+        else: # Alta
             if all(k in upd for k in ("nombre", "precio", "stock")): # para cada k en ("","","") compruebo que k esté en upd
                 inv[pid] = upd.copy()
     log.info("Aplicando actualizacion...")

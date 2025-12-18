@@ -23,8 +23,8 @@ def guardar_resultados(ruta: Path, data: Any) -> None:
     ruta.parent.mkdir(parents=True, exist_ok=True)
     try:
         with open(ruta, "w", encoding="utf-8") as f:
-            log.info("Guardado de JSON en: %s", ruta)
             json.dump(data, f, ensure_ascii=False, indent=2)
+            log.info("Guardado de JSON en: %s", ruta)
     except PermissionError:
         raise SystemExit(f"Sin permisos para escribir en {ruta}")
     except FileNotFoundError:

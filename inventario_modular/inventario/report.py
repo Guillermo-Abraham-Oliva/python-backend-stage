@@ -10,9 +10,16 @@ def generar_reporte(catalogo_final: list[dict[str, Any]],
     valor_total_stock = round(sum(p["precio_final"] * p["stock"] for p in catalogo_final), 2)
 
     ordenados = sorted(catalogo_final, key=lambda o: o["stock"], reverse=True)
-    top_n = max(0, int(top_n)) # Si top_n es menor que 0, lo subo a 0. Si es mayor, lo dejo como está
-    top_ids = [t["id"] for t in ordenados[:top_n]]
-    
+    try:
+        top_n = int(top_n)
+    except Exception:
+        top_n = 3 # asigno 3 por default
+        
+    if top_n < 0:
+        top_n = 3 # asigno 3 por default
+
+    top_ids = [p["id"] for p in ordenados[:top_n]]
+
     log.info("Reporte generado: %d activos, %d bajas, %d productos top stock", total_activos, len(ids_baja), top_n)
 
     return {
@@ -22,3 +29,4 @@ def generar_reporte(catalogo_final: list[dict[str, Any]],
         "ids_baja": ids_baja,
         "conteo_bajas": len(ids_baja),
     }
+
